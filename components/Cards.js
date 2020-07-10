@@ -44,6 +44,10 @@ function Cards(articleObjData) {
     cardDiv.appendChild(headlineDiv);
     cardDiv.appendChild(authorDiv);
 
+    headlineDiv.addEventListener('click', (e) => {
+        console.log(headlineDiv.textContent)
+    })
+
     return cardDiv;
 }
 
