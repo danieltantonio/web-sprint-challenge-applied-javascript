@@ -46,7 +46,7 @@ function Cards(articleObjData) {
 
     headlineDiv.addEventListener('click', (e) => {
         console.log(headlineDiv.textContent)
-    })
+    });
 
     return cardDiv;
 }

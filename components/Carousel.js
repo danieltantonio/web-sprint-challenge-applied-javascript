@@ -35,11 +35,18 @@ function Carousel() {
   carousel.classList.add('carousel');
   leftButton.classList.add('left-button');
   rightButton.classList.add('right-button');
+  img1.classList.add('slide');
+  img2.classList.add('slide');
+  img3.classList.add('slide');
+  img4.classList.add('slide');
 
-  img1.src = "./carousel/mountains.jpg";
-  img2.src = "./carousel/computer.jpg";
-  img3.src = "./carousel/trees.jpg";
-  img4.src = "./carousel/turntable.jpg";
+  leftButton.textContent = '<';
+  rightButton.textContent = '>';
+
+  img1.src = "./carousel/mountains.jpeg";
+  img2.src = "./carousel/computer.jpeg";
+  img3.src = "./carousel/trees.jpeg";
+  img4.src = "./carousel/turntable.jpeg";
 
   carousel.appendChild(leftButton);
   carousel.appendChild(img1);
@@ -52,3 +59,44 @@ function Carousel() {
 }
 
 document.querySelector('.carousel-container').appendChild(Carousel());
+
+let slideIndex = 0
+
+const displaySlide = (n) => {
+  const slides = document.querySelectorAll('.slide');
+  slideIndex += n;
+
+  if(slideIndex > slides.length) { slideIndex = 1 }
+  if(slideIndex < 0) { slideIndex = slides.length - 1 }
+
+  slides[slideIndex].style.display = 'block';
+}
+
+displaySlide(slideIndex);
+
+const btnFunc = () => {
+  const leftButton = document.querySelector('.left-button');
+  const rightButton = document.querySelector('.right-button');
+  const slides = document.querySelectorAll('.slide');
+
+  rightButton.onclick = () => {
+    let indexCheck = slideIndex;
+    if(indexCheck === 3) {
+      displaySlide(-slideIndex)
+      slides[indexCheck].style.display = 'none';
+    } else {
+      displaySlide(1)
+      slides[indexCheck].style.display = 'none';
+    }
+  }
+
+  leftButton.onclick = () => {
+    let indexCheck = slideIndex;
+    displaySlide(-1);
+    slides[indexCheck].style.display = 'none';
+  }
+
+  console.log(slideIndex)
+  
+}
+btnFunc();
